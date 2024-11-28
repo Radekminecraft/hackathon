@@ -28,8 +28,23 @@
     margin-right: auto;
     height: 100%;
 }*/
-
-
+.dropdown-content { 
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    top: 5rem;
+    width: 48%;
+}
+  
+  .dropdown-content a {
+    text-decoration: none;
+    color: black;
+  }
+  
 .building-overview-div {
     background-color: white;
     color: black;
@@ -100,8 +115,6 @@ p {
 .building {
     background-color: #fb8b24;
     height: 4rem;
-    margin-left: 25%;
-    margin-right: 40%;
     vertical-align: middle;
     border-radius: 1rem;
     margin-top: 1rem;
@@ -141,10 +154,11 @@ p {
 }
 #arrow {
     height: 4rem;
-    width: auto;
-    margin-top: 1rem;
+   margin-top: 1rem;
     margin-left: 13rem;
-}
+    cursor: pointer;
+}    width: auto;
+ 
 
 .triviaVec{
   position: fixed;
