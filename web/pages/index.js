@@ -30,7 +30,7 @@ export default function Home() {
         </div>
         <br></br>
         <div class="building-overview-div">
-          <p>Budova 3</p>
+        <p>Budova 3</p>
         </div>
       </a>
     </>

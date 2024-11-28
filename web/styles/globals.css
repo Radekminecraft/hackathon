@@ -9,7 +9,20 @@
 .title {
     text-align: center;
     
-    
+}
+
+.building-overview-a {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.building-overview-div {
+    background-color: lightblue;
+    color: black;
+
+    text-align: center;
+    font-size: 200%;
 }
 .building-overview-a {
     max-width: fit-content;
@@ -23,7 +36,6 @@
 
     text-align: center;
     font-size: 200%;
-    
     margin-left: auto;
     margin-right: auto;
 
@@ -40,4 +52,11 @@
     }
 
 
+
 }
+
+p {
+    vertical-align: middle;
+    padding-top: 1rem;
+}
+
