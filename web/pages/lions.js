@@ -9,8 +9,6 @@ export default function Lions() {
     return (
         <>
         <Header></Header>
-        <h1>Lev img</h1>
-        <h1>Informace</h1>
         <div className={styles.animal_grid_container}>
             <div id={styles.item1} className={styles.animal_div}>
                 <h2  className={styles.animal_h2}>Simba</h2>
@@ -40,7 +38,9 @@ export default function Lions() {
             </div>
         </div>
         
-
+        <div>
+            
+        </div>
         <h1>Statistika</h1>
         <h1>Harmonogram</h1>
         </>
