@@ -14,6 +14,14 @@
     text-align: left;
 }
 
+.animal_heading {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 .animal_h2 {
     font-size: 1.5rem;
     font-weight: bold;
@@ -23,3 +31,9 @@
     height:fit-content;
     width: fit-content;
 }
+
+.graph {
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
