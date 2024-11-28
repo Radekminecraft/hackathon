@@ -26,7 +26,6 @@ app.get("/houses", (req, res) => {
 		"Origin, X-Requested-With, Content-Type, Accept"
 	);
 	const sql = `
-
 SELECT * FROM houses; 
   `;
 	db.query(sql, (err, result) => {
@@ -112,7 +111,8 @@ app.get("/houses/:houseId/count", (req, res) => {
     const sql = `
 
 SELECT 
-    COUNT(residents.id) AS pocet_zvirat
+    COUNT(residents.id) AS x,
+    houses.pocet AS z
 FROM residents
 INNER JOIN houses ON residents.house_id = houses.id
 WHERE houses.id = ?;
