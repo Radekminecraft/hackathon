@@ -11,3 +11,29 @@
     
     
 }
+.header {
+    background-color: #FF8343;
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 10rem;
+  }
+  .header-items {
+    display: inline-flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    gap: 3rem;
+    flex-direction: row;
+}
+.header-item {
+  font-size: 1.3rem;
+  color:  #aec3b0;
+  transition: ease 0.7s;
+}
+.header-item:hover {
+  transform: rotate(10deg);
+  color: #e3efd3;
+}
