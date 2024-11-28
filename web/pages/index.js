@@ -20,6 +20,14 @@ export default function Home() {
       <p className="text-red-600">
           Posledni lidi: {pocet}        
       </p>
+      <div>
+        <button class="building-index-button">Budova 1</button>
+        <br></br>
+        <button class="building-index-button">Budova 2</button>
+        <br></br>
+
+      </div>
+
     </>
   );
 }
