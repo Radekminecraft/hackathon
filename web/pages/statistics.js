@@ -33,6 +33,7 @@ export default function AnimalPage() {
   // State for animal data and loading status
   const [animalData, setAnimalData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [li, setLi] = useState(false);
 
   // Fetch the animal data from the JSON file
   useEffect(() => {
@@ -47,7 +48,9 @@ export default function AnimalPage() {
         setLoading(false);
       }
     };
-
+    if(animalName=="Tiger"){
+      setLi(true)
+    }
     fetchData();
   }, [animalName]);
 
@@ -124,7 +127,7 @@ export default function AnimalPage() {
           <header className="main-title text-9xl font-bold text-gray-800">
             {animalData.name} Statistics
           </header>
-
+          <a className={li?"learnmore":"none"}>learn more</a>
 
           {/* Animal Info Section (under Learn More button) */}
           <div className="triviaVec ">
