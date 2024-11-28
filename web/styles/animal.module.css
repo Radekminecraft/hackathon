@@ -1,41 +1,39 @@
 .animal_grid_container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    grid-template-rows: auto; /* Adjust rows based on content height */
-    column-gap: 20px; /* Space between columns */
-    row-gap: 20px; /* Space between rows */
-    width: 100%; /* Make container responsive */
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    column-width: 20px;
+
+    width: 50%;
+    margin: 0 auto;
 }
 
-
-
 .animal_div {
-    max-width: fit-content;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.animal_heading {
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
-    
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.animal_h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.lion_img {
+    height:fit-content;
+    width: fit-content;
+}
+
+.graph {
+    width:50%;
     margin-left: auto;
     margin-right: auto;
   }
-
-.animal_h2 {
-font-size: 30px;
-font-weight: bold;
-}
-
-#item1 {
-    grid-column:1;
-    grid-row: 1;
-}
-
-#img1 {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-#img2 {
-
-}
-
-#img3{
-
-}
