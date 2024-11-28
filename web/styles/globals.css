@@ -142,8 +142,16 @@ p {
 
 
 
-.mrdka{
+.triviaVec{
   position: fixed;
-  left: 1%;
-  top: 5%;
+  left: 2%;
+  bottom: 2%;
+  padding: 0.2vw;
+  border: 2px solid black;
+  border-radius: 1vw;
+  background-color: #ffb590;
+}
+.graf{
+  position: fixed;
+  right: 0;
 }
