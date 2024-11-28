@@ -30,7 +30,7 @@ export default function Login() {
                 <input type="password" id="password" name="password"></input><br></br>
                 <div className="spacer-20"></div>
                 <input id="logform-submit" type="submit" value="Submit"></input>
-            </form>
+            </form>     
         </div>
         
         </>
