@@ -1,0 +1,12 @@
+.animal_div {
+    max-width: fit-content;
+    width: 50%;
+    
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.animal_h2 {
+font-size: 30px;
+font-weight: bold;
+}
