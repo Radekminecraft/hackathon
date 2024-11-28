@@ -6,10 +6,10 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 
 const db = mysql.createPool({
-	host: "bignn7lh7whughtyvp6m-mysql.services.clever-cloud.com",
-	user: "uc1vpfemcoa0gcdj",
+  host: "bauxslat3clrt4seb2dx-mysql.services.clever-cloud.com",
+	user: "ugugbjmjcongpmfg",
 	password: process.env.PASSWORD,
-	database: "bignn7lh7whughtyvp6m",
+	database: "bauxslat3clrt4seb2dx",
 	charset: "utf8mb4",
 	multipleStatements: true,
 });
@@ -18,51 +18,116 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
-//get all users
-app.get("/", (req, res) => {
+//get all houses - ADMIN, DELETE LATER!!!!
+app.get("/houses", (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header(
 		"Access-Control-Allow-Headers",
 		"Origin, X-Requested-With, Content-Type, Accept"
 	);
 	const sql = `
-		SELECT *
-		FROM posts 
-		`;
+
+SELECT * FROM houses; 
+  `;
 	db.query(sql, (err, result) => {
 		if (err) throw err;
 		res.send(result);
 	});
 });
 
-//get one post
-app.get("/posts/:id", (req, res) => {
-	console.log(req.params.id);
 
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header(
-		"Access-Control-Allow-Headers",
-		"Origin, X-Requested-With, Content-Type, Accept"
-	);
-	const sql = `
-		SELECT
-		posts.id,
-		posts.body, 
-		posts.video_id,
-		DATE_FORMAT(posts.datum, '%d/%m/%Y %H:%i') AS posted_date,
-		users.user_id AS user_id,
-		users.username AS username,
-		users.pfp AS pfp,
-		users.email AS email
-		FROM posts 
-		LEFT JOIN users ON posts.user_id = users.user_id
-		WHERE posts.id = ?
-		`;
-	db.query(sql, [req.params.id], (err, result) => {
-		if (err) throw err;
-		res.send(result);
-	});
+// Get houses of a user
+app.get("/houses/:id", (req, res) => {
+    console.log(req.params.id);
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
+    const sql = `
+        SELECT 
+            houses.id AS house_id,
+            houses.address,
+            houses.created_at,
+            users.user_id AS user_id,
+            users.username,
+            users.pfp,
+            users.email
+        FROM houses
+        INNER JOIN users ON houses.user_id = users.user_id
+        WHERE users.user_id = ?
+    `;
+
+    db.query(sql, [req.params.id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to fetch houses" });
+        }
+        res.status(200).send(result);
+    });
 });
+
+// Get residents of a specific house
+app.get("/houses/:houseId/residents", (req, res) => {
+    console.log(req.params.houseId);
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
+    const sql = `
+        SELECT 
+            residents.id AS resident_id,
+            residents.name AS resident_name,
+            houses.id AS house_id,
+            houses.address AS house_address
+        FROM residents
+        INNER JOIN houses ON residents.house_id = houses.id
+        WHERE houses.id = ?
+    `;
+
+    db.query(sql, [req.params.houseId], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to fetch residents" });
+        }
+        res.status(200).send(result);
+    });
+});
+
+// Add a new resident to a specific house
+app.post("/houses/:houseId/residents", (req, res) => {
+    const { name, pfp } = req.body; // Expecting name and pfp URL in request body
+    const { houseId } = req.params; // Get the houseId from route parameter
+
+    // Check if name is provided
+    if (!name) {
+        return res.status(400).send({ error: "Name is required" });
+    }
+
+    const sql = `
+        INSERT INTO residents (house_id, name, pfp)
+        VALUES (?, ?, ?);
+    `;
+
+    db.query(sql, [houseId, name, pfp || null], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to add resident" });
+        }
+        res.status(201).send({ message: "Resident added successfully", residentId: result.insertId });
+    });
+});
+
+
+
+
+
+
 
 //add a user - sign up
 app.post("/users", async (req, res) => {
@@ -169,7 +234,8 @@ app.post("/users-login/:email", async (req, res) => {
 	let password = reqe[0].password;
 
 	const sql = `
-		SELECT * FROM users
+
+		SELECT * FROM User
 		WHERE email = ?
 	`;
 	db.query(sql, [email], async (err, result) => {
