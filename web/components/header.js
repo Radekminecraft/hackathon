@@ -5,7 +5,7 @@ function Header(){
     return(
         <header className={styles.header}>
             <a className="title" href=".">
-                css
+                
             </a>
             <div className={styles.header_items}>
                 <a className={styles.header_item} href="">A</a>
