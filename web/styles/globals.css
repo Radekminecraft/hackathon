@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text {
+    font-size: 3rem;
+    color: red;
+}
+.title {
+    text-align: center;
+    
+    
+}
