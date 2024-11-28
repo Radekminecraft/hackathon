@@ -8,6 +8,7 @@
 }
 .title {
     font-size: 3rem;
+    cursor:default;
     
 }
 .img {
@@ -79,13 +80,8 @@ p {
     }
 }
 
-#logform-input:hover {
-    background-color: #fb8b24;
-}
-
 #logform-submit {
     width: 100%;
-    
 
 }
 #logform-submit:hover {
@@ -102,12 +98,20 @@ p {
 
 
 .building {
-    text-align: center;
-}
-.inner-building {
     background-color: #fb8b24;
     height: 4rem;
-    text-align: left;
+    margin-left: 25%;
+    margin-right: 40%;
+    vertical-align: middle;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.buildingi {
+    background-color: #fb8b24;
+    height: 4rem;
     margin-left: 25%;
     margin-right: 40%;
     vertical-align: middle;
@@ -116,6 +120,9 @@ p {
     position: relative;
     display: flex;
     justify-content: space-between;
+}
+.inner-building {
+    text-align: center;
 }
 .inner-building:hover {
     box-shadow: 20rem;
