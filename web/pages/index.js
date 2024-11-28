@@ -33,7 +33,7 @@ export default function Home() {
       <Header />
       <div className="main-title">
         <img src="/pet.png" className="img" alt="Pet" />
-        <h1 className="title">Výběhy</h1>
+        <h1 className="title">Exhibitions</h1>
       </div>
 
       {/* Display animal data dynamically */}
@@ -42,6 +42,7 @@ export default function Home() {
           <div className="building">
             <p className="house-text">{animal.name}</p>
             <p className="build-text">Animals outside: {animal.population}/{animal.max}</p>
+            <p className="build-text">Number of animals: {animal.population}</p>
           </div>
         </a>
       ))}
