@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.paragraph {
-    font-size: 600;
+.text {
+    font-size: 3rem;
     color: red;
 }
 .title {
     text-align: center;
+    
     
 }

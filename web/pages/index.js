@@ -1,5 +1,5 @@
-import Image from "next/image";
-import localFont from "next/font/local";
+<<<<<<< Updated upstream
+=======
 import { useEffect, useState } from "react";
 
 
@@ -14,20 +14,18 @@ export default function Home() {
         {/*Počítaní lidí v panelovém domě*/}
         projekt name
       </h1>
-      <p className="text-red-600">
+      <p className="text">
           Počet lidí: {pocet}        
       </p>
-      <p className="text-red-600">
+      <p className="text">
           Posledni lidi: {pocet}        
       </p>
-      <div>
-        <button class="building-index-button">Budova 1</button>
-        <br></br>
-        <button class="building-index-button">Budova 2</button>
-        <br></br>
-
-      </div>
-
+      <a href="entry_1">
+        <div>
+          css
+        </div>
+      </a>
     </>
   );
 }
+>>>>>>> Stashed changes
