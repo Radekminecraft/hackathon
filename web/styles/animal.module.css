@@ -1,0 +1,41 @@
+.animal_grid_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: auto; /* Adjust rows based on content height */
+    column-gap: 20px; /* Space between columns */
+    row-gap: 20px; /* Space between rows */
+    width: 100%; /* Make container responsive */
+}
+
+
+
+.animal_div {
+    max-width: fit-content;
+    width: 50%;
+    
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.animal_h2 {
+font-size: 30px;
+font-weight: bold;
+}
+
+#item1 {
+    grid-column:1;
+    grid-row: 1;
+}
+
+#img1 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#img2 {
+
+}
+
+#img3{
+
+}

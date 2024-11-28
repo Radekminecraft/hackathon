@@ -1,38 +1,52 @@
+import { useState, useEffect } from 'react';
+import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { useEffect, useState } from "react";
-
 
 export default function Home() {
-  const [pocet, setPocet] = useState(0)
-  useEffect(()=>{
-    setPocet(pocet+1)
-  },[])
+  // State to hold the animal data
+  const [animalData, setAnimalData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  // Fetch the animal data from the JSON file when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/animals.json'); // Access animals.json from the public folder
+        const data = await res.json();
+        setAnimalData(data); // Store the entire animal data in state
+      } catch (error) {
+        console.error('Error loading animal data:', error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
+      }
+    };
+
+    fetchData(); // Call the function to fetch data
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading message while data is being fetched
+  }
+
   return (
     <>
-    <Header></Header>
-      <h1 className="text-black text-6xl text-center m-4 font-mono">
-        {/*Počítaní lidí v panelovém domě*/}
-        Přehled osob
-      </h1>
-      <p className="text">
-          Počet lidí: {pocet}        
-      </p>
-      <p className="text">
-          Posledni lidi: {pocet}        
-      </p>
-      <a class="bulding-overview-a" href="">
-        <div class="building-overview-div">
-          <p>Budova 1</p>
-        </div>
-        <br></br>
-        <div class="building-overview-div">
-          <p>Budova 2</p>
-        </div>
-        <br></br>
-        <div class="building-overview-div">   
-          <p>Budova 3</p>
-        </div>
-      </a>
+      <Header />
+      <div className="main-title">
+        <img src="/pet.png" className="img" alt="Pet" />
+        <h1 className="title">Výběhy</h1>
+      </div>
+
+      {/* Display animal data dynamically */}
+      {Object.entries(animalData).map(([key, animal]) => (
+        <a key={key} className="inner-building" href={"statistics?q="+animal.name.toLowerCase()}>
+          <div className="building">
+            <p className="house-text">{animal.name}</p>
+            <p className="build-text">Počet zvířat: {animal.population}</p>
+          </div>
+        </a>
+      ))}
+
+      <Footer />
     </>
   );
 }

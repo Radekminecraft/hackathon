@@ -68,6 +68,125 @@ app.get("/houses/:id", (req, res) => {
     });
 });
 
+// Get residents of a specific house
+app.get("/houses/:houseId/residents", (req, res) => {
+    console.log(req.params.houseId);
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
+    const sql = `
+        SELECT 
+            residents.id AS resident_id,
+            residents.name AS resident_name,
+            houses.id AS house_id,
+            houses.address AS house_address
+        FROM residents
+        INNER JOIN houses ON residents.house_id = houses.id
+        WHERE houses.id = ?
+    `;
+
+    db.query(sql, [req.params.houseId], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to fetch residents" });
+        }
+        res.status(200).send(result);
+    });
+});
+
+// Get residents of a specific house
+app.get("/houses/:houseId/count", (req, res) => {
+    console.log(req.params.houseId);
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
+    const sql = `
+
+SELECT 
+    COUNT(residents.id) AS x,
+    houses.pocet AS z
+FROM residents
+INNER JOIN houses ON residents.house_id = houses.id
+WHERE houses.id = ?;
+
+    `;
+
+    db.query(sql, [req.params.houseId], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to fetch residents" });
+        }
+        res.status(200).send(result);
+    });
+});
+
+// Add a new resident to a specific house
+app.post("/houses/:houseId/residents", (req, res) => {
+    const { name} = req.body; // Expecting name and pfp URL in request body
+    const pfp = "https://wallpapers.com/images/hd/blank-default-pfp-wue0zko1dfxs9z2c.jpg"
+    const { houseId } = req.params; // Get the houseId from route parameter
+
+    // Check if name is provided
+    if (!name) {
+        return res.status(400).send({ error: "Name is required" });
+    }
+
+    const sql = `
+        INSERT INTO residents (house_id, name, pfp)
+        VALUES (?, ?, ?);
+    `;
+
+    db.query(sql, [houseId, name, pfp || null], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to add resident" });
+        }
+        res.status(201).send({ message: "Resident added successfully", residentId: result.insertId });
+    });
+});
+
+// Update the username of a specific resident
+app.put("/residents/:id/", (req, res) => {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    if (!name) {
+        return res.status(400).send({ error: "New username is required" });
+    }
+
+    const sql = `
+        UPDATE residents
+        SET name = ?
+        WHERE id = ?
+    `;
+
+    db.query(sql, [name, id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to update username" });
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).send({ error: "Resident not found" });
+        }
+        res.status(200).send({ message: "Username updated successfully" });
+    });
+});
+
+
+
+
+
+
+
+
 //add a user - sign up
 app.post("/users", async (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");

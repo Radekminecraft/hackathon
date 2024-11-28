@@ -7,45 +7,55 @@
     color: red;
 }
 .title {
-    text-align: center;
+    font-size: 3rem;
+    cursor:default;
     
 }
+.img {
+    height: 3rem;
+    width: auto;
+    margin-top: 1rem;
+}
+.main-title {
+    display: flex;
+    position: relative;
+    margin-left: 25%;
+    
+}
+/*.building-overview-a {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}*/
 
-.building-overview-a {
+
+.building-overview-div {
+    background-color: white;
+    color: black;
+    font-size: 200%;
+
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    height: 100%;
-}
-.building-overview-div {
-    background-color: #ff8343;
-    color: black;
-    text-align: center;
-    font-size: 200%;
-}
-.building-overview-a {
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100%;
-}
-.building-overview-div {
-    background-color: lightblue;
-    color: black;
-    text-align: center;
-    font-size: 200%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: 150px;
     border: 3px solid black;
-    vertical-align: middle;
+
+    position: fixed;
+    top: 30%;
+    left: 40%;
     p {
         vertical-align: middle;
         padding-top: 1rem;
     }
 }
+.building-overview-button {
+    width: 50%;
+    height: 100px;
+    border: 3px solid black;
+    margin-left: auto;
+    margin-right: auto;
 
+}
 p {
     vertical-align: middle;
     padding-top: 0rem;
@@ -77,11 +87,75 @@ p {
 #logform-submit:hover {
     background-color: #ff8343;
     /*padding: 5px; */
-    transition: 100ms linear;
-    border: 5px solid #ff8343;
+    transition: 0.4s ease;
+    border: 5px solid #0f4c5c;
 }
 
 .spacer-20 {
     width: 100px;
     height: 20px;
+}
+
+
+.building {
+    background-color: #fb8b24;
+    height: 4rem;
+    margin-left: 25%;
+    margin-right: 40%;
+    vertical-align: middle;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.buildingi {
+    background-color: #fb8b24;
+    height: 4rem;
+    margin-left: 25%;
+    margin-right: 40%;
+    vertical-align: middle;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.inner-building {
+    text-align: center;
+}
+.inner-building:hover {
+    box-shadow: 20rem;
+}
+.house-text {
+    text-align: left;
+    font-size: 1.9rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    
+}
+.build-text {
+    text-align: right;
+    margin: 1rem;
+}
+#arrow {
+    height: 4rem;
+    width: auto;
+    margin-top: 1rem;
+    margin-left: 13rem;
+}
+
+.triviaVec{
+  position: fixed;
+  left: 2%;
+  bottom: 2%;
+  padding: 0.2vw;
+  border: 2px solid black;
+  border-radius: 1vw;
+  background-color: #ffb590;
+}
+.graf{
+  position: fixed;
+  right: 0;
 }
