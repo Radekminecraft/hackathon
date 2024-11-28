@@ -139,15 +139,12 @@ p {
     text-align: right;
     margin: 1rem;
 }
-
-
-
-
-
-
-
-
-
+#arrow {
+    height: 4rem;
+    width: auto;
+    margin-top: 1rem;
+    margin-left: 13rem;
+}
 
 .triviaVec{
   position: fixed;

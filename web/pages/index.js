@@ -9,13 +9,29 @@ export default function Home() {
   useEffect(()=>{
     setPocet(pocet+1)
   },[])
-
+  function Dropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
   return (
     <>
     <Header></Header>
     <div className="main-title">
       <img src="/pet.png" className="img"></img>
       <h1 className="title">Výběhy</h1>
+      <img src="/arrow.png" id="arrow" onClick={Dropdown}></img>
     </div>
     <a className="inner-building" href="">
       <div className="buildingi">
