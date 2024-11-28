@@ -1,3 +1,4 @@
+import Header from "@/components/header";
 import { useEffect, useState } from "react";
 
 
@@ -8,6 +9,7 @@ export default function Home() {
   },[])
   return (
     <>
+    <Header></Header>
       <h1 className="text-black text-6xl text-center m-4 font-mono">
         {/*Počítaní lidí v panelovém domě*/}
         Přehled osob
