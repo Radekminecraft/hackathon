@@ -12,7 +12,7 @@ export default function Home() {
     <Header></Header>
       <h1 className="text-black text-6xl text-center m-4 font-mono">
         {/*Počítaní lidí v panelovém domě*/}
-        projekt name
+        Přehled osob
       </h1>
       <p className="text">
           Počet lidí: {pocet}        
@@ -20,12 +20,19 @@ export default function Home() {
       <p className="text">
           Posledni lidi: {pocet}        
       </p>
-      <a href="entry_1">
-        <div>
-          css
+      <a class="bulding-overview-a" href="">
+        <div class="building-overview-div">
+          <p>Budova 1</p>
+        </div>
+        <br></br>
+        <div class="building-overview-div">
+          <p>Budova 2</p>
+        </div>
+        <br></br>
+        <div class="building-overview-div">
+          <p>Budova 3</p>
         </div>
       </a>
     </>
   );
 }
-
