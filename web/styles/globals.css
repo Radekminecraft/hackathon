@@ -10,3 +10,34 @@
     text-align: center;
     
 }
+
+.building-overview-a {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.building-overview-div {
+    background-color: lightblue;
+    color: black;
+
+    text-align: center;
+    font-size: 200%;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 50%;
+    height: 150px;
+
+    border: 3px solid black;
+
+    vertical-align: middle;
+
+    p {
+        vertical-align: middle;
+        padding-top: 1rem;
+    }
+
+
+}
