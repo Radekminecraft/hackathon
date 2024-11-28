@@ -18,7 +18,7 @@
     height: 100%;
 }
 .building-overview-div {
-    background-color: lightblue;
+    background-color: #ff8343;
     color: black;
 
     text-align: center;
@@ -59,4 +59,3 @@ p {
     vertical-align: middle;
     padding-top: 1rem;
 }
-
