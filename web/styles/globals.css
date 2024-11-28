@@ -9,5 +9,79 @@
 .title {
     text-align: center;
     
+}
+
+.building-overview-a {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.building-overview-div {
+    background-color: #ff8343;
+    color: black;
+    text-align: center;
+    font-size: 200%;
+}
+.building-overview-a {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.building-overview-div {
+    background-color: lightblue;
+    color: black;
+    text-align: center;
+    font-size: 200%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 150px;
+    border: 3px solid black;
+    vertical-align: middle;
+    p {
+        vertical-align: middle;
+        padding-top: 1rem;
+    }
+}
+
+p {
+    vertical-align: middle;
+    padding-top: 0rem;
+}
+
+#logform-div {
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 5rem;
     
+
+}
+#logform-form {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 50px;
+    max-width: fit-content;
+    input {
+        border: 1px solid black;
+        border-radius: 1rem;
+    }
+}
+
+#logform-submit {
+    width: 100%;
+
+}
+#logform-submit:hover {
+    background-color: #ff8343;
+    /*padding: 5px; */
+    transition: 100ms linear;
+    border: 5px solid #ff8343;
+}
+
+.spacer-20 {
+    width: 100px;
+    height: 20px;
 }
