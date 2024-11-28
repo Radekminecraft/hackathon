@@ -20,7 +20,6 @@ export default function Login() {
 
     return (
         <>
-        <Header></Header>
         <div id="logform-div" action="Login()">
             <form onSubmit={e => submit(e)} id="logform-form">
                 <label htmlFor="username">Username</label><br></br>

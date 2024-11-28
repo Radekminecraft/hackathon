@@ -24,3 +24,9 @@
   transform: rotate(10deg);
   color: #e3efd3;
 }
+.footer {
+  background-color: #0f4c5c;
+  width: 100%;
+  margin-top: 10%;
+  height: 20rem;
+}

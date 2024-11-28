@@ -1,4 +1,6 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
+import PetImage from "../../web/public/pet.png"
 import { useEffect, useState } from "react";
 
 
@@ -11,25 +13,29 @@ export default function Home() {
   return (
     <>
     <Header></Header>
-      <h1 className="text-black text-6xl text-center m-4 font-mono">
-        {/*počet zvířat v ohradě*/}
-        Přehled osob
-      </h1>
-      <p className="text">
-          Počet lidí: {pocet}        
-      </p>
-      <p className="text">
-          Posledni lidi: {pocet}        
-      </p>
-    <a className="building" href="">
-      <div className="inner-building"><a className="text-build">ds</a></div>
+    <div className="main-title">
+      <img src="/pet.png" className="img"></img>
+      <h1 className="title">Výběhy</h1>
+    </div>
+    <a className="inner-building" href="">
+      <div className="buildingi">
+        <p className="house-text">lvi</p>
+        <p className="build-text">Počet zvířat: {pocet}</p>
+      </div>
     </a>
-    <a className="building" href="">
-      <div className="inner-building">ahoj</div>
+    <a className="inner-building" href="">
+      <div className="building">
+        <p className="house-text">krokodyli</p>
+        <p className="build-text">Počet zvířat: {pocet}</p>
+      </div>
     </a>
-    <a className="building" href="">
-      <div className="inner-building"><a className="text-build">ds</a></div>
+    <a className="inner-building" href="">
+      <div className="building">
+        <p className="house-text">hadi</p>
+        <p className="build-text">Počet zvířat: {pocet}</p>
+      </div>
     </a>
+    <Footer></Footer>
     </>
   );
 }
