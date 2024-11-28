@@ -87,6 +87,9 @@ p {
 
 
 .building {
+    text-align: center;
+}
+.inner-building {
     background-color: #fb8b24;
     height: fit-content;
     text-align: left;
