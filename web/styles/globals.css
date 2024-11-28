@@ -9,7 +9,6 @@
 .title {
     text-align: center;
     
-<<<<<<< HEAD
 }
 
 .building-overview-a {
@@ -34,15 +33,11 @@
     border: 3px solid black;
 
     vertical-align: middle;
-
-    p {
-        vertical-align: middle;
-        padding-top: 1rem;
-    }
-
-
 }
-=======
-    
+
+p {
+    vertical-align: middle;
+    padding-top: 1rem;
 }
->>>>>>> 6263787c7565f1026f2136beb8068e7f91b5f6e7
+
+
