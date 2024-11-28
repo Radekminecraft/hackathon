@@ -87,17 +87,17 @@ p {
 
 
 .building {
-    text-align: center;
-}
-.inner-building {
     background-color: #fb8b24;
-    height: fit-content;
+    height: ;
     text-align: left;
     margin-left: 25%;
     margin-right: 50%;
     margin-top: 2rem;
     vertical-align: middle;
     border-radius: 1rem;
+}
+.inner-building {
+    text-align: center;
 }
 .inner-building:hover {
     box-shadow: 20rem;

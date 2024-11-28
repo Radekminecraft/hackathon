@@ -7,12 +7,12 @@ export default function Home() {
   useEffect(()=>{
     setPocet(pocet+1)
   },[])
-  
+
   return (
     <>
     <Header></Header>
       <h1 className="text-black text-6xl text-center m-4 font-mono">
-        {/*Počítaní lidí v panelovém domě*/}
+        {/*počet zvířat v ohradě*/}
         Přehled osob
       </h1>
       <p className="text">
@@ -25,7 +25,7 @@ export default function Home() {
       <div className="inner-building"><a className="text-build">ds</a></div>
     </a>
     <a className="building" href="">
-      <div className="inner-building"><a className="text-build">ds</a></div>
+      <div className="inner-building">ahoj</div>
     </a>
     <a className="building" href="">
       <div className="inner-building"><a className="text-build">ds</a></div>
