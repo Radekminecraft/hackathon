@@ -155,11 +155,34 @@ app.post("/houses/:houseId/residents", (req, res) => {
 });
 
 // Add a new resident to a specific house
-app.post("/ohrady/1/zvirata", (req, res) => {
+app.get("/ohrady/1/zvirata", (req, res) => {
     const { pocet} = req.body; // Expecting name and pfp URL in request body
     const pfp = "https://wallpapers.com/images/hd/blank-default-pfp-wue0zko1dfxs9z2c.jpg"
     const { houseId } = req.params; // Get the houseId from route parameter
     console.log(pocet)
+    // // Check if name is provided
+    // if (!pocet) {
+    //     return res.status(400).send({ error: "Name is required" });
+    // }
+
+    const sql = `
+SELECT max_animals, pocet FROM houses;
+    `;
+
+    db.query(sql, [pocet, houseId, pfp || null], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to get resident" });
+        }
+        res.status(201).send(result);
+    });
+});
+
+
+app.post("/ohrady/1/zvirata", (req, res) => {
+    const { pocet} = req.body; // Expecting name and pfp URL in request body
+    const pfp = "https://wallpapers.com/images/hd/blank-default-pfp-wue0zko1dfxs9z2c.jpg"
+    const { houseId } = req.params; // Get the houseId from route parameter
     // Check if name is provided
     if (!pocet) {
         return res.status(400).send({ error: "Name is required" });
@@ -173,6 +196,7 @@ WHERE id = ?;
 
     `;
 
+    console.log(pocet,houseId)
     db.query(sql, [pocet, houseId, pfp || null], (err, result) => {
         if (err) {
             console.error(err);
@@ -181,8 +205,6 @@ WHERE id = ?;
         res.status(201).send({ message: "Resident added successfully", residentId: result.insertId });
     });
 });
-
-
 
 
 // Update the username of a specific resident
