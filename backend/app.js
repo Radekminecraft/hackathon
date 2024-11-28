@@ -99,9 +99,39 @@ app.get("/houses/:houseId/residents", (req, res) => {
     });
 });
 
+// Get residents of a specific house
+app.get("/houses/:houseId/count", (req, res) => {
+    console.log(req.params.houseId);
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
+    const sql = `
+
+SELECT 
+    COUNT(residents.id) AS pocet_zvirat
+FROM residents
+INNER JOIN houses ON residents.house_id = houses.id
+WHERE houses.id = ?;
+
+    `;
+
+    db.query(sql, [req.params.houseId], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to fetch residents" });
+        }
+        res.status(200).send(result);
+    });
+});
+
 // Add a new resident to a specific house
 app.post("/houses/:houseId/residents", (req, res) => {
-    const { name, pfp } = req.body; // Expecting name and pfp URL in request body
+    const { name} = req.body; // Expecting name and pfp URL in request body
+    const pfp = "https://wallpapers.com/images/hd/blank-default-pfp-wue0zko1dfxs9z2c.jpg"
     const { houseId } = req.params; // Get the houseId from route parameter
 
     // Check if name is provided
@@ -123,54 +153,22 @@ app.post("/houses/:houseId/residents", (req, res) => {
     });
 });
 
-// Utility function to generate random string (username)
-function generateRandomUsername(length = 8) {
-    return crypto.randomBytes(length).toString('hex').slice(0, length); // Generates a random hex string
-}
-
-// Add a new resident to a specific house
-app.post("/houses/:houseId/residents", (req, res) => {
-    const { name, pfp } = req.body; // Expecting name and pfp URL in request body
-    const { houseId } = req.params; // Get the houseId from route parameter
-
-    // Check if name is provided
-    if (!name) {
-        return res.status(400).send({ error: "Name is required" });
-    }
-
-    // Generate a random username
-    const username = generateRandomUsername();
-
-    // SQL query to insert new resident with random username
-    const sql = `
-        INSERT INTO residents (house_id, name, pfp, username)
-        VALUES (?, ?, ?, ?);
-    `;
-
-    db.query(sql, [houseId, name, pfp || null, username], (err, result) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send({ error: "Failed to add resident" });
-        }
-        res.status(201).send({ message: "Resident added successfully", residentId: result.insertId, username });
-    });
-});
 // Update the username of a specific resident
-app.put("/residents/:id/username", (req, res) => {
+app.put("/residents/:id/", (req, res) => {
     const { id } = req.params;
-    const { newUsername } = req.body;
+    const { name } = req.body;
 
-    if (!newUsername) {
+    if (!name) {
         return res.status(400).send({ error: "New username is required" });
     }
 
     const sql = `
         UPDATE residents
-        SET username = ?
+        SET name = ?
         WHERE id = ?
     `;
 
-    db.query(sql, [newUsername, id], (err, result) => {
+    db.query(sql, [name, id], (err, result) => {
         if (err) {
             console.error(err);
             return res.status(500).send({ error: "Failed to update username" });
@@ -181,6 +179,9 @@ app.put("/residents/:id/username", (req, res) => {
         res.status(200).send({ message: "Username updated successfully" });
     });
 });
+
+
+
 
 
 
