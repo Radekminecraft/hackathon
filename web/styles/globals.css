@@ -69,8 +69,13 @@ p {
     }
 }
 
+#logform-input:hover {
+    background-color: #fb8b24;
+}
+
 #logform-submit {
     width: 100%;
+    
 
 }
 #logform-submit:hover {
