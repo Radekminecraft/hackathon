@@ -60,10 +60,10 @@ export default function Home() {
       <Header />
       <div className="main-title dropdown-container">
         <img src="/pet.png" className="img" alt="Pet" />
-        <h1 className="title">Výběhy</h1>
+        <h1 className="title">Exhibition</h1>
         <img
           src="/arrow.png"
-          id="arrow"
+          id="arrow1"
           className="dropbtn"
           onClick={toggleDropdown}
           alt="Toggle Dropdown"
@@ -76,7 +76,7 @@ export default function Home() {
               <a key={key} className="inner-building" href={`statistics?q=${animal.name.toLowerCase()}`}>
                 <div className="building">
                   <p className="house-text">{animal.name}</p>
-                  <p className="build-text">Počet zvířat: {animal.population}</p>
+                  <p className="build-text">Number of animals: {animal.population}</p>
                 </div>
               </a>
             ))}

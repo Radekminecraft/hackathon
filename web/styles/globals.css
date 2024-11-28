@@ -43,6 +43,7 @@
   .dropdown-content a {
     text-decoration: none;
     color: black;
+
   }
   
 .building-overview-div {
@@ -152,14 +153,24 @@ p {
     text-align: right;
     margin: 1rem;
 }
-#arrow {
+#arrow1 {
     height: 4rem;
-   margin-top: 1rem;
+    width: auto;
+    margin-top: 1rem;
     margin-left: 13rem;
     cursor: pointer;
-}    width: auto;
- 
+    transition: 0.4s ease;
 
+}
+#arrow {
+    height: 4rem;
+    width: auto;
+    margin-top: 1rem;
+    margin-left: 13rem;
+    cursor: pointer;
+    rotate: -180deg;
+    transition: 0.4s ease;
+}
 .triviaVec{
   position: fixed;
   left: 2%;
@@ -170,6 +181,6 @@ p {
   background-color: #ffb590;
 }
 .graf{
-    position: fixed;
-    right: 0;
-  }
+  position: fixed;
+  right: 0;
+}

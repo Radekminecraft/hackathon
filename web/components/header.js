@@ -8,10 +8,10 @@ function Header(){
                 
             </a>
             <div className={styles.header_items}>
-                <a className={styles.header_item} href="">O Zoo</a>
-                <a className={styles.header_item} href="">Ceník</a>
-                <a className={styles.header_item} href="">Výběhy</a>
-                <a className={styles.header_item} href="">Galerie</a>
+                <a className={styles.header_item} href="">About Zoo</a>
+                <a className={styles.header_item} href="">Pricelist</a>
+                <a className={styles.header_item} href="">Exhibitions</a>
+                <a className={styles.header_item} href="">Galery</a>
             </div>
         </header>
     );
