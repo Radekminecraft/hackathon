@@ -2,20 +2,23 @@
   "tiger": {
     "name": "Tiger",
     "population": 3900,
+    "max": 20,
     "habitat": "Forests of Asia",
     "diet": "Carnivorous",
     "lifespan": "10-15 years"
   },
   "hippo": {
     "name": "Hippo",
-    "population": 12000,
+    "max": 14,
+    "population": 12,
     "habitat": "Rivers of Sub-Saharan Africa",
     "diet": "Herbivorous",
     "lifespan": "40-50 years"
   },
   "elephant": {
     "name": "Elephant",
-    "population": 415000,
+    "max": 17,
+    "population": 15,
     "habitat": "Grasslands, forests, and savannahs",
     "diet": "Herbivorous",
     "lifespan": "60-70 years"

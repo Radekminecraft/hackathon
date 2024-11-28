@@ -6,7 +6,7 @@ export default function Home() {
   // State to hold the animal data
   const [animalData, setAnimalData] = useState({});
   const [loading, setLoading] = useState(true);
-
+  const [readNum, setRealNum] = useState(0)
   // Fetch the animal data from the JSON file when the component mounts
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +41,7 @@ export default function Home() {
         <a key={key} className="inner-building" href={"statistics?q="+animal.name.toLowerCase()}>
           <div className="building">
             <p className="house-text">{animal.name}</p>
-            <p className="build-text">Počet zvířat: {animal.population}</p>
+            <p className="build-text">Animals outside: {animal.population}/{animal.max}</p>
           </div>
         </a>
       ))}
