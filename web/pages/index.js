@@ -29,8 +29,8 @@ export default function Home() {
           <p>Budova 2</p>
         </div>
         <br></br>
-        <div class="building-overview-div">
-        <p>Budova 3</p>
+        <div class="building-overview-div">   
+          <p>Budova 3</p>
         </div>
       </a>
     </>
