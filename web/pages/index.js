@@ -1,5 +1,3 @@
-import Image from "next/image";
-import localFont from "next/font/local";
 import { useEffect, useState } from "react";
 
 
@@ -14,10 +12,10 @@ export default function Home() {
         {/*Počítaní lidí v panelovém domě*/}
         Přehled osob
       </h1>
-      <p className="text-red-600">
+      <p className="text">
           Počet lidí: {pocet}        
       </p>
-      <p className="text-red-600">
+      <p className="text">
           Posledni lidi: {pocet}        
       </p>
       <a class="bulding-overview-a" href="">
@@ -33,7 +31,6 @@ export default function Home() {
           <p>Budova 3</p>
         </div>
       </a>
-
     </>
   );
 }

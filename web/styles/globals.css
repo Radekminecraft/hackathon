@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.paragraph {
-    font-size: 600;
+.text {
+    font-size: 3rem;
     color: red;
 }
 .title {
     text-align: center;
     
+<<<<<<< HEAD
 }
 
 .building-overview-a {
@@ -41,3 +42,7 @@
 
 
 }
+=======
+    
+}
+>>>>>>> 6263787c7565f1026f2136beb8068e7f91b5f6e7
