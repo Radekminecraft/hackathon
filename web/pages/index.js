@@ -7,6 +7,7 @@ export default function Home() {
   useEffect(()=>{
     setPocet(pocet+1)
   },[])
+  
   return (
     <>
     <Header></Header>
@@ -20,19 +21,15 @@ export default function Home() {
       <p className="text">
           Posledni lidi: {pocet}        
       </p>
-      <a class="bulding-overview-a" href="">
-        <div class="building-overview-div">
-          <p>Budova 1</p>
-        </div>
-        <br></br>
-        <div class="building-overview-div">
-          <p>Budova 2</p>
-        </div>
-        <br></br>
-        <div class="building-overview-div">   
-          <p>Budova 3</p>
-        </div>
-      </a>
+    <a className="building" href="">
+      <div className="inner-building"><a className="text-build">ds</a></div>
+    </a>
+    <a className="building" href="">
+      <div className="inner-building"><a className="text-build">ds</a></div>
+    </a>
+    <a className="building" href="">
+      <div className="inner-building"><a className="text-build">ds</a></div>
+    </a>
     </>
   );
 }
