@@ -123,7 +123,64 @@ app.post("/houses/:houseId/residents", (req, res) => {
     });
 });
 
+// Utility function to generate random string (username)
+function generateRandomUsername(length = 8) {
+    return crypto.randomBytes(length).toString('hex').slice(0, length); // Generates a random hex string
+}
 
+// Add a new resident to a specific house
+app.post("/houses/:houseId/residents", (req, res) => {
+    const { name, pfp } = req.body; // Expecting name and pfp URL in request body
+    const { houseId } = req.params; // Get the houseId from route parameter
+
+    // Check if name is provided
+    if (!name) {
+        return res.status(400).send({ error: "Name is required" });
+    }
+
+    // Generate a random username
+    const username = generateRandomUsername();
+
+    // SQL query to insert new resident with random username
+    const sql = `
+        INSERT INTO residents (house_id, name, pfp, username)
+        VALUES (?, ?, ?, ?);
+    `;
+
+    db.query(sql, [houseId, name, pfp || null, username], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to add resident" });
+        }
+        res.status(201).send({ message: "Resident added successfully", residentId: result.insertId, username });
+    });
+});
+// Update the username of a specific resident
+app.put("/residents/:id/username", (req, res) => {
+    const { id } = req.params;
+    const { newUsername } = req.body;
+
+    if (!newUsername) {
+        return res.status(400).send({ error: "New username is required" });
+    }
+
+    const sql = `
+        UPDATE residents
+        SET username = ?
+        WHERE id = ?
+    `;
+
+    db.query(sql, [newUsername, id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({ error: "Failed to update username" });
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).send({ error: "Resident not found" });
+        }
+        res.status(200).send({ message: "Username updated successfully" });
+    });
+});
 
 
 
