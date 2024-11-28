@@ -5,13 +5,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-		"dev": "nodemon app.js",
-		"postinstall": "npm run build"
+    "dev": "nodemon app.js",
+    "build": "node app.js",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "n+1"
   ],
   "author": "divear",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.7"
+  }
 }
