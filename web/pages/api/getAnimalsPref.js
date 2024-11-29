@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   }
 
   let body = JSON.parse(JSON.stringify(req.body));
+  console.log(body)
   if (!body.time || !body.animal || !body.isKid) return res.status(401).json({ message: "nah get out" });
   const now = new Date();
   const yesterday = new Date(now);
@@ -56,6 +57,7 @@ export default async function handler(req, res) {
       if (b.type === body.animal) return 1;  // Ensure consistent sorting
       return b.average - a.average; // Sort by average in descending order
     });
-
+  console.log("APIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+  console.log(sortedAverages)
   return res.status(200).json({ animals: sortedAverages });
 }
