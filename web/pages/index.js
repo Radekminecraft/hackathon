@@ -71,6 +71,30 @@ export default function Home() {
         {/* Dropdown Menu */}
         {isDropdownOpen && (
           <div className="dropdown-content">
+            <a className="inner-building" href="lions">
+                <div className="building">
+                  <p className="house-text">Lions</p>
+                  <p className="build-text">Number of animals: 3</p>
+                </div>
+            </a>
+            <a className="inner-building" href="tigers">
+                <div className="building">
+                  <p className="house-text">Tigers</p>
+                  <p className="build-text">Number of animals: 3</p>
+                </div>
+            </a>
+            <a className="inner-building" href="hippos">
+                <div className="building">
+                  <p className="house-text">hippos</p>
+                  <p className="build-text">Number of animals: 3</p>
+                </div>
+            </a>
+            <a className="inner-building" href="elephants">
+                <div className="building">
+                  <p className="house-text">Elephants</p>
+                  <p className="build-text">Number of animals: 3</p>
+                </div>
+            </a>
             {/* Display animal data dynamically */}
             {Object.entries(animalData).map(([key, animal]) => (
               <a key={key} className="inner-building" href={`statistics?q=${animal.name.toLowerCase()}`}>
