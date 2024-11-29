@@ -1,0 +1,28 @@
+{
+  "hours": {
+    "0": { "Tiger": 3, "Hippo": 10, "Elephant": 50 },
+    "1": { "Tiger": 2, "Hippo": 8, "Elephant": 45 },
+    "2": { "Tiger": 4, "Hippo": 9, "Elephant": 40 },
+    "3": { "Tiger": 3, "Hippo": 7, "Elephant": 35 },
+    "4": { "Tiger": 5, "Hippo": 12, "Elephant": 38 },
+    "5": { "Tiger": 6, "Hippo": 15, "Elephant": 42 },
+    "6": { "Tiger": 8, "Hippo": 18, "Elephant": 60 },
+    "7": { "Tiger": 10, "Hippo": 20, "Elephant": 70 },
+    "8": { "Tiger": 12, "Hippo": 25, "Elephant": 90 },
+    "9": { "Tiger": 15, "Hippo": 28, "Elephant": 100 },
+    "10": { "Tiger": 14, "Hippo": 30, "Elephant": 120 },
+    "11": { "Tiger": 18, "Hippo": 35, "Elephant": 130 },
+    "12": { "Tiger": 20, "Hippo": 40, "Elephant": 150 },
+    "13": { "Tiger": 25, "Hippo": 38, "Elephant": 140 },
+    "14": { "Tiger": 22, "Hippo": 36, "Elephant": 145 },
+    "15": { "Tiger": 19, "Hippo": 30, "Elephant": 135 },
+    "16": { "Tiger": 17, "Hippo": 28, "Elephant": 125 },
+    "17": { "Tiger": 16, "Hippo": 26, "Elephant": 120 },
+    "18": { "Tiger": 14, "Hippo": 22, "Elephant": 115 },
+    "19": { "Tiger": 12, "Hippo": 20, "Elephant": 110 },
+    "20": { "Tiger": 10, "Hippo": 18, "Elephant": 100 },
+    "21": { "Tiger": 8, "Hippo": 15, "Elephant": 90 },
+    "22": { "Tiger": 6, "Hippo": 12, "Elephant": 80 },
+    "23": { "Tiger": 4, "Hippo": 10, "Elephant": 70 }
+  }
+}
