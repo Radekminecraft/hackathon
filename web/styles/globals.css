@@ -306,3 +306,10 @@ fieldset div {
     padding-top: 5rem;
     color: #fb8b24;
 }
+
+
+.div-content {
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 0.5rem;
+}

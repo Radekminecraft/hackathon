@@ -172,6 +172,14 @@ export default function Home({ animals }) {
           </button>
         </form>
       </div>
+
+      <div className="trip-planning-div">
+        <div className="trip-planning-form">
+          <div className="div-content">adf</div>
+          <div className="div-content">adf</div>
+          <div className="div-content">adf</div>
+        </div>
+      </div>
       <Footer />
     </>
   );
