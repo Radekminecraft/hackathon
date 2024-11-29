@@ -32,9 +32,11 @@ export default function Home({ animals }) {
   const toggleDropdown = () => {
     if (isDropdownOpen) {
       let goober = document.getElementById("arrow");
+      if(goober == null) return;
       goober.id = "arrow1";
     } else {
       let goober = document.getElementById("arrow1");
+      if(goober == null) return;
       goober.id = "arrow";
     }
     setIsDropdownOpen(!isDropdownOpen);

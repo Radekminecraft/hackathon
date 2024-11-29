@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   yesterday.setDate(now.getDate() - 1);
   const dayBeforeYesterday = new Date(now);
   dayBeforeYesterday.setDate(now.getDate() - 2);
-
+  
   console.log(body.isKid)
   const filteredUpdates = (updates, targetDate) =>
     updates.filter((update) => {
