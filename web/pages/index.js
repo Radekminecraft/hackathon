@@ -95,9 +95,9 @@ export default function Home({ animals }) {
             <option value="hippos">Hippos</option>
           </select>
 
-          {/* Time of visit */}
-          <label htmlFor="visit-time">What time will you visit?</label>
-          <input type="time" id="visit-time" name="visit-time" />
+          {/* Time of visit in hours*/}
+          <label htmlFor="visit-time">What time will you visit (in hours)?</label>
+          <input type="number" id="favorite-animal" name="visit-time" />
 
           {/* Food preference */}
           <fieldset>

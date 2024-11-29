@@ -8,7 +8,7 @@ for i in range(24):
         "http://localhost:3000/api/updateAnimal",
         json={
             'time': f'2024-11-28T{minute}:00:00.000Z',
-            'animal': 'tiger',
+            'animal': 'lion',
             'inside': random.randint(0, 20)
         }
     )
