@@ -9,9 +9,19 @@ export default async function handler(req, res) {
     }
     let body = JSON.parse(JSON.stringify(req.body));
     if(!body.animal || !body.inside) return res.status(401).json({ message: "Animal missing"})
+    let time = new Date().toISOString()
+    if(body.time) time = body.time
+    await prisma.animal.update({
+        where: {
+            type: body.animal
+        },
+        data: {
+            latestUpdateCount: parseInt(body.inside)
+        }
+    })
     let data = await prisma.data.create({
         data: {
-            updateAt: new Date().toISOString(),
+            updateAt: time,
             animalsIn: parseInt(body.inside),
             animalType: body.animal
         }
