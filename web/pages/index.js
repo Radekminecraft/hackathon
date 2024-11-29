@@ -18,6 +18,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ animals }) {
+  const [animalss, setAnimalss] = useState([]); // Stores the response data
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [form, setForm] = useState({
     agepref: "",
@@ -27,7 +28,7 @@ export default function Home({ animals }) {
     isKid: true,
   });
 
-  const toggleDropdown = () => { //tak za ten koblizek
+  const toggleDropdown = () => {
     if (isDropdownOpen) {
       let goober = document.getElementById("arrow");
       goober.id = "arrow1";
@@ -51,10 +52,11 @@ export default function Home({ animals }) {
     console.log("Submitting form data:", form);
     axios
       .post("/api/getAnimalsPref", form)
-      .then(function (response) {
+      .then((response) => {
+        setAnimalss(response.data.animals); // Update the state with the response
         console.log("Response:", response);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log("Error:", error);
       });
   };
@@ -69,7 +71,7 @@ export default function Home({ animals }) {
     window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
-  console.log(form.agepref)
+
   return (
     <>
       <Header />
@@ -103,19 +105,16 @@ export default function Home({ animals }) {
         )}
       </div>
       <div className="trip-planning-div">
-        <form
-          className="trip-planning-form"
-          onSubmit={send} // Use form's `onSubmit` event
-        >
-          <label htmlFor="agepref">Age preference</label>
+        <form className="trip-planning-form" onSubmit={send}>
+          <label htmlFor="isKid">Age preference</label>
           <select
             onChange={changeForm}
-            name="agepref"
-            id="agepref"
+            name="isKid"
+            id="isKid"
             value={form.agepref}
           >
-            <option value="true">Kids </option>
-            <option value="false">Adults</option>
+            <option value="1">Kids</option>
+            <option value="0">Adults</option>
           </select>
 
           <label htmlFor="animal">Favorite animal</label>
@@ -126,10 +125,10 @@ export default function Home({ animals }) {
             value={form.animal}
           >
             <option value="">Select an animal</option>
-            <option value="lions">Lions</option>
-            <option value="tigers">Tigers</option>
-            <option value="elephants">Elephants</option>
-            <option value="hippos">Hippos</option>
+            <option value="lion">Lions</option>
+            <option value="tiger">Tigers</option>
+            <option value="elephant">Elephants</option>
+            <option value="hippo">Hippos</option>
           </select>
 
           <label htmlFor="time">What time will you visit (in hours)?</label>
@@ -173,13 +172,19 @@ export default function Home({ animals }) {
         </form>
       </div>
 
-      <div className="trip-planning-div">
-        <div className="trip-planning-form">
-          <div className="div-content">adf</div>
-          <div className="div-content">adf</div>
-          <div className="div-content">adf</div>
+      {/* Conditionally render the results */}
+      {animalss.length > 0 && (
+        <div className="trip-planning-div py-2" id="result">
+          <div className="trip-planning-form">
+            {animalss.map((animal, index) => (
+              <div key={index} className="div-content">
+                {animal.type} | Around this time outside: {animal.average}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
       <Footer />
     </>
   );

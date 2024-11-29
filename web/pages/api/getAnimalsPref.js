@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  let body = JSON.parse(JSON.stringify(req.body));
+  let body = JSON.parse(JSON.stringify(req.body)); //1 == kid
   console.log(body)
   if (!body.time || !body.animal || !body.isKid) return res.status(401).json({ message: "nah get out" });
   const now = new Date();
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     }
   })
   const averages = animals.map((animal, index) => {
-    if(index > 2 && body.isKid) {
+    if(index > 2 && body.isKid == "1") {
         return null;
     }
     const updates = animal.updates;
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
       values.reduce((sum, count) => sum + count, 0) / values.length;
     return { type: animal.type, average: avg, max: animal.max };
   });
-
+  console.log(averages)
   // Sort the array
   const sortedAverages = averages
     .filter((item) => item !== null) // Remove null values
