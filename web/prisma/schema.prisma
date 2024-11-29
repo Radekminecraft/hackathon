@@ -14,10 +14,30 @@ datasource db {
 }
 
 model animal {
-  type     String @id @unique
+  type     String    @id @unique
   max      Int
-  inside   Int
   habitat  String
   diet     String
   lifespan String
+  articles article[]
+  updates  data[]
+}
+
+model article {
+  id              String  @id @unique @default(cuid())
+  animalName      String
+  arrivedAtTheZoo String?
+  age             String
+  description     String?
+  imageUrl        String
+  animal          animal? @relation(fields: [animalType], references: [type])
+  animalType      String?
+}
+
+model data {
+  id         String   @id @unique @default(cuid())
+  updateAt   DateTime @default(now())
+  animalsIn  Int
+  animal     animal?  @relation(fields: [animalType], references: [type])
+  animalType String?
 }

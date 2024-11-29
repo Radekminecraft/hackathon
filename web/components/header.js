@@ -8,6 +8,7 @@ function Header(){
                 
             </a>
             <div className={styles.header_items}>
+                <a className={styles.header_item} href="..">Home</a>
                 <a className={styles.header_item} href="">About Zoo</a>
                 <a className={styles.header_item} href="">Pricelist</a>
                 <a className={styles.header_item} href="">Exhibitions</a>

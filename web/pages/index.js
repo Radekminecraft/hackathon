@@ -1,31 +1,26 @@
 import { useState, useEffect } from 'react';
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import prisma from '@/utils/prisma.client';
 
-export default function Home() {
-  // State to hold the animal data
-  const [animalData, setAnimalData] = useState({});
-  const [loading, setLoading] = useState(true);
 
-  // State to handle dropdown visibility
+
+export async function getServerSideProps() {
+  const animals = await prisma.animal.findMany(
+    {include: {
+      updates: true
+    }}
+  );
+  return {
+    props: {
+      animals: JSON.parse(JSON.stringify(animals)),
+    },
+  };
+}
+
+
+export default function Home({ animals }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  // Fetch the animal data from the JSON file when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/animals.json'); // Access animals.json from the public folder
-        const data = await res.json();
-        setAnimalData(data); // Store the entire animal data in state
-      } catch (error) {
-        console.error('Error loading animal data:', error);
-      } finally {
-        setLoading(false); // Set loading to false after data is fetched
-      }
-    };
-
-    fetchData(); // Call the function to fetch data
-  }, []);
 
   // Toggle the dropdown visibility
   const toggleDropdown = () => {
@@ -51,10 +46,6 @@ export default function Home() {
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>; // Show a loading message while data is being fetched
-  }
-
   return (
     <>
       <Header />
@@ -71,36 +62,12 @@ export default function Home() {
         {/* Dropdown Menu */}
         {isDropdownOpen && (
           <div className="dropdown-content">
-            <a className="inner-building" href="lions">
-                <div className="building">
-                  <p className="house-text">Lions</p>
-                  <p className="build-text">Number of animals: 3</p>
-                </div>
-            </a>
-            <a className="inner-building" href="tigers">
-                <div className="building">
-                  <p className="house-text">Tigers</p>
-                  <p className="build-text">Number of animals: 3</p>
-                </div>
-            </a>
-            <a className="inner-building" href="hippos">
-                <div className="building">
-                  <p className="house-text">hippos</p>
-                  <p className="build-text">Number of animals: 3</p>
-                </div>
-            </a>
-            <a className="inner-building" href="elephants">
-                <div className="building">
-                  <p className="house-text">Elephants</p>
-                  <p className="build-text">Number of animals: 3</p>
-                </div>
-            </a>
             {/* Display animal data dynamically */}
-            {Object.entries(animalData).map(([key, animal]) => (
-              <a key={key} className="inner-building" href={`statistics?q=${animal.name.toLowerCase()}`}>
+            {Object.entries(animals).map(([key, animal]) => (
+              <a key={key} className="inner-building" href={`/animal/${animal.type.toLowerCase()}`}>
                 <div className="building">
-                  <p className="house-text">{animal.name}</p>
-                  <p className="build-text">Number of animals: {animal.population}</p>
+                  <p className="house-text">{animal.type}</p>
+                  <p className="build-text">Number of animals: {animal.max - animal.updates[0].animalsIn}</p>
                 </div>
               </a>
             ))}
