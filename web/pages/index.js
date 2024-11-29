@@ -80,10 +80,8 @@ export default function Home({ animals }) {
           {/* Age preference */}
           <label htmlFor="agepref">Age preference</label>
           <select name="agepref" id="agepref">
-            <option value="first-age-pref">Kids under 8</option>
-            <option value="second-age-pref">Kids over 8</option>
-            <option value="third-age-pref">Adults</option>
-            <option value="fourth-age-pref">Elderly</option>
+            <option value="first-age-pref">Kid</option>
+            <option value="second-age-pref">Adult</option>
           </select>
 
           {/* Favorite animal */}
