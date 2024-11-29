@@ -60,7 +60,7 @@ export default function Home({ animals }) {
           <div className="dropdown-content">
             {/* Display animal data dynamically */}
             {Object.entries(animals).map(([key, animal]) => (
-              <a key={key} className="inner-building" href={`statistics?q=${animal.type.toLowerCase()}`}>
+              <a key={key} className="inner-building" href={`/animal/${animal.type.toLowerCase()}`}>
                 <div className="building">
                   <p className="house-text">{animal.type}</p>
                   <p className="build-text">Number of animals: {animal.max - animal.inside}</p>
