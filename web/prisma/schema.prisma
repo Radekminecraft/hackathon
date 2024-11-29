@@ -14,7 +14,10 @@ datasource db {
 }
 
 model animal {
-  type   String @id @unique
-  max    Int
-  inside Int
+  type     String @id @unique
+  max      Int
+  inside   Int
+  habitat  String
+  diet     String
+  lifespan String
 }
