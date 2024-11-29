@@ -115,6 +115,7 @@ export default function Home({ animals }) {
           <input id="agepref-submit" type="submit" value="Submit" />
         </form>
       </div>
+      <br></br>
 
 
 
