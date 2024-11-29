@@ -15,8 +15,8 @@ function Footer() {
             </div>
             <div className={styles.links}>
                 <img src="/facebook.svg" className={styles.link}></img>
-                <img src="/instagram.svg" className={styles.link}></img>
-                <img src="/github.svg" className={styles.link}></img>
+                <a href="https://www.instagram.com/lukas_odehnal/"><img src="/instagram.svg" className={styles.link}></img></a>
+                <a href="https://github.com/patricinocz"><img src="/github.svg" className={styles.link}></img></a>
                 <img src="/youtube.svg" className={styles.link}></img>
                 <img src="/tiktok.svg" className={styles.link}></img>
                 <img src="/twitter-x.svg" className={styles.link}></img>
