@@ -141,7 +141,7 @@ export default function Animal({ animal }) {
             return <>
               <div id={animal.type + i} className={styles.animal_div}>
                 <h2 className={styles.animal_h2}>{article.animalName}</h2>
-                  <img id={styles.lion_img} src={"/" + article.imageUrl} alt={article.id}></img>
+                  <img className={styles.lion_img} src={`/${article.imageUrl}`} alt={article.imageUrl} />
                   <p><strong>Age:</strong> {article.age}</p>
                   <p><strong>Arrived at the Zoo:</strong> {article.arrivedAtTheZoo}</p>
                   <p>{article.description}</p>
@@ -156,8 +156,6 @@ export default function Animal({ animal }) {
         <div className={styles.graph}>
             <Line data={chartData} options={options} />
         </div>
-        <h1>Statistika</h1>
-        <h1>Harmonogram</h1>
         </>
     )
 }
