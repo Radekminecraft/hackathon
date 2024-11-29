@@ -5,9 +5,9 @@ function Footer() {
         <>
         <footer className={styles.footer}>
             <div className={styles.inner_footer}>
-                <img src="/pet.svg" className="img"></img>
+                <img src="/peti.svg" className="img"></img>
             <a className={styles.footer_title}>Trackimal</a>
-            <img src="/rab.svg" className="img"></img>
+            <img src="/rabi.svg" className="img"></img>
             </div>
             <div className={styles.contacts}>
                 <a className={styles.contact}>+420 606 659 995</a>
