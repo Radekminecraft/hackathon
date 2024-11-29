@@ -57,31 +57,44 @@ export default function Animal({ animal }) {
 
     // Generate chart data from `animal.updates`
     useEffect(() => {
-        if (animal && animal.updates && animal.updates.length > 0) {
-            // Extract hours and animalsIn
-            const hours = animal.updates.map((update) => {
-                const date = new Date(update.updateAt);
-                console.log(date)
-                return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
-            });
-
-            const animalsIn = animal.updates.map((update) => update.animalsIn);
-
-            // Set chart data
-            setChartData({
-                labels: hours,
-                datasets: [
-                    {
-                        label: `Number of ${animal.updates[0].animalType}s`,
-                        data: animalsIn,
-                        fill: false,
-                        borderColor: "#ff8343", // Orange color
-                        tension: 0.1,
-                    },
-                ],
-            });
-        }
-    }, [animal]);
+      if (animal && animal.updates && animal.updates.length > 0) {
+          // Get the current time
+          const now = new Date();
+          
+          // Filter updates from the past 24 hours
+          const recentUpdates = animal.updates.filter((update) => {
+              const updateTime = new Date(update.updateAt);
+              return now - updateTime <= 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+          });
+  
+          if (recentUpdates.length > 0) {
+              // Extract hours and animalsIn from recent updates
+              const hours = recentUpdates.map((update) => {
+                  const date = new Date(update.updateAt);
+                  return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
+              });
+  
+              const animalsIn = recentUpdates.map((update) => update.animalsIn);
+  
+              // Set chart data
+              setChartData({
+                  labels: hours,
+                  datasets: [
+                      {
+                          label: `Number of ${recentUpdates[0].animalType}s`,
+                          data: animalsIn,
+                          fill: false,
+                          borderColor: "#ff8343", // Orange color
+                          tension: 0.1,
+                      },
+                  ],
+              });
+          } else {
+              setChartData(null); // No data for the past 24 hours
+          }
+      }
+  }, [animal]);
+  
 
     // Don't render the chart until the data is ready
     if (!chartData) {

@@ -9,7 +9,7 @@ export async function getServerSideProps() {
   const animals = await prisma.animal.findMany(
     {include: {
       updates: true
-    }}
+    },}
   );
   return {
     props: {
@@ -67,14 +67,58 @@ export default function Home({ animals }) {
               <a key={key} className="inner-building" href={`/animal/${animal.type.toLowerCase()}`}>
                 <div className="building">
                   <p className="house-text">{animal.type}</p>
-                  <p className="build-text">Number of animals: {animal.max - animal.updates[0].animalsIn}</p>
+                  <p className="build-text">Number of animals: {animal.max - animal.latestUpdateCount}</p>
                 </div>
               </a>
             ))}
           </div>
+          
         )}
       </div>
-      < Footer/>
+      <div className="trip-planning-div">
+        <form className="trip-planning-form">
+          {/* Age preference */}
+          <label htmlFor="agepref">Age preference</label>
+          <select name="agepref" id="agepref">
+            <option value="first-age-pref">Kids under 8</option>
+            <option value="second-age-pref">Kids over 8</option>
+            <option value="third-age-pref">Adults</option>
+            <option value="fourth-age-pref">Elderly</option>
+          </select>
+
+          {/* Favorite animal */}
+          <label htmlFor="favorite-animal">Favorite animal</label>
+          <select name="favorite-animal" id="favorite-animal">
+            <option value="lions">Lions</option>
+            <option value="tigers">Tigers</option>
+            <option value="elephants">Elephants</option>
+            <option value="hippos">Hippos</option>
+          </select>
+
+          {/* Time of visit */}
+          <label htmlFor="visit-time">What time will you visit?</label>
+          <input type="time" id="visit-time" name="visit-time" />
+
+          {/* Food preference */}
+          <fieldset>
+            <legend>Would you like food included?</legend>
+            <div>
+              <input type="radio" id="food-yes" name="food" value="yes" />
+              <label htmlFor="food-yes">Yes</label>
+            </div>
+            <div>
+              <input type="radio" id="food-no" name="food" value="no" />
+              <label htmlFor="food-no">No</label>
+            </div>
+          </fieldset>
+
+          <input id="agepref-submit" type="submit" value="Submit" />
+        </form>
+      </div>
+
+
+
+      <Footer />
     </>
   );
 }

@@ -19,6 +19,7 @@ model animal {
   habitat  String
   diet     String
   lifespan String
+  latestUpdateCount Int @default(0)
   articles article[]
   updates  data[]
 }
