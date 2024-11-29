@@ -1,4 +1,13 @@
 {
+  "lion": {
+    "name": "Lion",
+    "population": 2,
+    "max": 3,
+    "habitat": "Africa",
+    "diet": "Carnivorous",
+    "lifespan": "15-20 years"
+
+  },
   "tiger": {
     "name": "Tiger",
     "population": 3900,
