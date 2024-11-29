@@ -133,7 +133,7 @@ export default function Lions() {
                 <img id={styles.lion_img} src="/lion1.jpeg"></img>
                 <p><strong>Age:</strong> 8 years</p>
                 <p><strong>Arrived at the Zoo:</strong> 6 years ago</p>
-                <p>Simba arrived as a cub, quickly becoming a favorite among both visitors and staff with his playful personality. As he grew, Simba developed into a strong and commanding leader within his pride. His majestic presence and confident nature make him a central figure in the zoo’s African savanna exhibit, where he enjoys basking in the sun and maintaining harmony among the other lions. His journey from a curious cub to a wise and powerful lion has been a remarkable transformation, and he now plays an essential role in the pride's social structure.</p>
+                <p>
                 
             </div>
 
