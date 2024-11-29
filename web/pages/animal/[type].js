@@ -35,80 +35,86 @@ export async function getServerSideProps({ params }) {
         type: type,
       },
       include: {
-        articles: true
+        articles: true,
+        updates: true
       }
     });
     console.log(animal)
     return {
       props: {
-        animal: animal,
+        animal: JSON.parse(JSON.stringify(animal)),
       },
     };
 }
 export default function Animal({ animal }) {
-     const router = useRouter(); // Get the router instance
+  const router = useRouter();
 
-     const { query } = router; // Extract query parameters
-     const animalName = query.q || 'tiger'; // Default to 'tiger' if no query is provided
+    // Extract query parameters if needed
+    const { query } = router;
 
-    // Mock data for the hours of the day (X-axis)
-    const hours = Array.from({ length: 24 }, (_, i) => i);
+    // State for chart data
+    const [chartData, setChartData] = useState(null);
 
-    // State for number of animals (Y-axis)
-    const [numberOfAnimals, setNumberOfAnimals] = useState(null);
-
-    // Generate random number of animals after the component mounts
+    // Generate chart data from `animal.updates`
     useEffect(() => {
-        const randomAnimals = hours.map(() => Math.floor(Math.random() * 50) + 10);
-        setNumberOfAnimals(randomAnimals);
-    }, []); // Empty dependency array to run only once on mount
+        if (animal && animal.updates && animal.updates.length > 0) {
+            // Extract hours and animalsIn
+            const hours = animal.updates.map((update) => {
+                const date = new Date(update.updateAt);
+                console.log(date)
+                return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
+            });
+
+            const animalsIn = animal.updates.map((update) => update.animalsIn);
+
+            // Set chart data
+            setChartData({
+                labels: hours,
+                datasets: [
+                    {
+                        label: `Number of ${animal.updates[0].animalType}s`,
+                        data: animalsIn,
+                        fill: false,
+                        borderColor: "#ff8343", // Orange color
+                        tension: 0.1,
+                    },
+                ],
+            });
+        }
+    }, [animal]);
 
     // Don't render the chart until the data is ready
-    if (numberOfAnimals === null) {
+    if (!chartData) {
         return <div className="text-center mt-10">Loading chart...</div>;
     }
 
-  const data = {
-    labels: hours.map(hour => `${hour}:00`), // Hour labels for the X-axis
-    datasets: [
-      {
-        label: 'Number of Animals in Exhibition',
-        data: numberOfAnimals,
-        fill: false,
-        borderColor: '#ff8343', // Orange color
-        tension: 0.1,
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: `Animals in Exhibition Over Time`,
-      },
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: 'Hour of the Day',
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "top",
+            },
+            title: {
+                display: true,
+                text: `Animals in Exhibition Over Time`,
+            },
         },
-      },
-      y: {
-        title: {
-          display: true,
-          text: 'Number of Animals',
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Hour of the Day",
+                },
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: "Number of Animals",
+                },
+                beginAtZero: true,
+            },
         },
-        beginAtZero: true,
-      },
-    },
-  };
-
+    };  
     return (
         <>
         <Header></Header>
@@ -135,7 +141,7 @@ export default function Animal({ animal }) {
             <p>{animal.type} activity during the day</p>
         </div>
         <div className={styles.graph}>
-            <Line data={data} options={options} />
+            <Line data={chartData} options={options} />
         </div>
         <h1>Statistika</h1>
         <h1>Harmonogram</h1>
