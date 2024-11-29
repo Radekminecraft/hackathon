@@ -26,7 +26,7 @@ export default function Home({ animals }) {
     animal: "",
     time: "",
     food: "",
-    isKid: true,
+    isKid: "0",
   });
 
   const toggleDropdown = () => {
@@ -126,7 +126,7 @@ export default function Home({ animals }) {
             onChange={changeForm}
             name="isKid"
             id="isKid"
-            value={form.agepref}
+            value={form.isKid}
           >
             <option value="1">Kids</option>
             <option value="0">Adults</option>
