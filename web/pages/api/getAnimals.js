@@ -7,7 +7,6 @@ export default async function handler(req, res) {
         res.status(400).json({ message: "Wrong request type"})
         return;
     }
-    let body = JSON.parse(JSON.stringify(req.body));
     let animal = await prisma.animal.findMany()
     return res.status(200).json({ animals: animal })
 }
