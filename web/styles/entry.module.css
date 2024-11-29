@@ -58,13 +58,14 @@
 }
 .contacts {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   text-align: center;
   justify-content: center;
   color: #FF8343;
 }
-.contact {
-  font-family: 3rem;
+.contacti {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 }
 .title {
   font-size: 3rem;

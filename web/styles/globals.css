@@ -29,6 +29,11 @@
     width: auto;
     margin-top: 1rem;
 }
+.imgi {
+    height: 2rem;
+    width: auto;
+    margin-top: 1rem;
+}
 .main-title {
     display: flex;
     position: relative;
