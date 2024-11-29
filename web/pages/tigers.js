@@ -159,8 +159,6 @@ export default function Lions() {
         <div className={styles.graph}>
             <Line data={data} options={options} />
         </div>
-        <h1>Statistika</h1>
-        <h1>Harmonogram</h1>
         </>
     )
 }
