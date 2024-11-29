@@ -74,7 +74,7 @@ export default function Home({ animals }) {
           </div>
         )}
       </div>
-      <Footer />
+      < Footer/>
     </>
   );
 }

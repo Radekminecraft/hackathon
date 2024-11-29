@@ -184,3 +184,19 @@ p {
   position: fixed;
   right: 0;
 }
+.picture {
+    height: 20rem;
+    width: 35.5rem;
+    object-fit: cover;
+}
+.center {
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    border-width: 2rem 2rem 0 2rem ;
+    border-color: #ff8343;
+    padding-top: 5rem;
+}
