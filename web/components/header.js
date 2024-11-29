@@ -6,11 +6,7 @@ function Header(){
         <header className={styles.header}>
             <div className={styles.flex}>
             <img src="/rab.svg" className="img"></img>
-<<<<<<< Updated upstream
-            <a className={styles.title} href="./">
-=======
             <a className={styles.title} href="..">
->>>>>>> Stashed changes
                 Trackimal
             </a>
             </div>
