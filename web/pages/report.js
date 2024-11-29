@@ -26,20 +26,18 @@ export default function Report({ animals }) {
   useEffect(() => {
     if (animals && hour !== null) {
       const now = new Date();
-
       // Calculate the dates for yesterday and the day before yesterday
       const yesterday = new Date(now);
       yesterday.setDate(now.getDate() - 1);
       const dayBeforeYesterday = new Date(now);
       dayBeforeYesterday.setDate(now.getDate() - 2);
-
       // Filter updates for the selected hour
       const filteredUpdates = (updates, targetDate) =>
         updates.filter((update) => {
           const updateDate = new Date(update.updateAt);
           return (
-            updateDate.getDate() === targetDate.getDate() &&
-            updateDate.getHours() === hour
+            updateDate.getDate() == targetDate.getDate() &&
+            updateDate.getHours() == hour
           );
         });
 
@@ -48,7 +46,6 @@ export default function Report({ animals }) {
         const updates = animal.updates;
         const yesterdayUpdates = filteredUpdates(updates, yesterday);
         const dayBeforeUpdates = filteredUpdates(updates, dayBeforeYesterday);
-
         const values = [
           ...yesterdayUpdates.map((u) => u.animalsIn),
           ...dayBeforeUpdates.map((u) => u.animalsIn),
@@ -57,9 +54,8 @@ export default function Report({ animals }) {
         if (values.length === 0) return null;
         const avg =
           values.reduce((sum, count) => sum + count, 0) / values.length;
-        return { type: animal.type, average: avg };
+        return { type: animal.type, average: avg, max: animal.max };
       });
-
       setAverage(averages.filter((avg) => avg !== null));
     }
   }, [hour, animals]);
@@ -117,7 +113,7 @@ export default function Report({ animals }) {
                   {animal.type}
                 </span>
                 <span className="text-lg font-semibold text-gray-800">
-                  {animal.average.toFixed(2)}
+                  {animal.max - animal.average.toFixed(0)}
                 </span>
               </li>
             ))}

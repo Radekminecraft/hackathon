@@ -16,7 +16,7 @@ export default async function handler(req, res) {
             type: body.animal
         },
         data: {
-            latestUpdateCount: body.inside
+            latestUpdateCount: parseInt(body.inside)
         }
     })
     let data = await prisma.data.create({
