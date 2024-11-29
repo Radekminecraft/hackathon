@@ -6,10 +6,14 @@ import prisma from '@/utils/prisma.client';
 
 
 export async function getServerSideProps() {
-  const animals = await prisma.animal.findMany();
+  const animals = await prisma.animal.findMany(
+    {include: {
+      updates: true
+    }}
+  );
   return {
     props: {
-      animals: animals,
+      animals: JSON.parse(JSON.stringify(animals)),
     },
   };
 }
@@ -63,7 +67,7 @@ export default function Home({ animals }) {
               <a key={key} className="inner-building" href={`/animal/${animal.type.toLowerCase()}`}>
                 <div className="building">
                   <p className="house-text">{animal.type}</p>
-                  <p className="build-text">Number of animals: {animal.max - animal.inside}</p>
+                  <p className="build-text">Number of animals: {animal.max - animal.updates[0].animalsIn}</p>
                 </div>
               </a>
             ))}
