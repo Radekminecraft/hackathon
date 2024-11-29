@@ -7,7 +7,7 @@ import requests
 import time
 
 model = YOLO('./trained/yolo11n.pt')
-UPDATETIME = 5
+UPDATETIME = 0.1
 mfs = True
 while mfs:
     response = requests.get("http://10.10.1.52:5000/")
@@ -34,7 +34,7 @@ while mfs:
                     animalCount += 1
         
         cv2.imshow("skafsl", img)
-        requests.post("https://hackathon-uygp.onrender.com/ohrady/1/zvirata", json={'pocet':f'{animalCount}'})
+        requests.post("https://hackathon-uygp.onrender.com/ohrady/1/zvirata", json={'pocet':f'1'})
         if cv2.waitKey(1) == 27:
             mfs = False
 
