@@ -27,7 +27,7 @@ export default function Home({ animals }) {
     isKid: true,
   });
 
-  const toggleDropdown = () => {
+  const toggleDropdown = () => { //tak za ten koblizek
     if (isDropdownOpen) {
       let goober = document.getElementById("arrow");
       goober.id = "arrow1";
