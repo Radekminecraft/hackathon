@@ -6,7 +6,7 @@ function Header(){
         <header className={styles.header}>
             <div className={styles.flex}>
             <img src="/rab.svg" className="img"></img>
-            <a className={styles.title} href=".">
+            <a className={styles.title} href="./">
                 Trackimal
             </a>
             </div>
