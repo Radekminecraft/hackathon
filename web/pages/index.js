@@ -19,6 +19,7 @@ export async function getServerSideProps() {
 
 export default function Home({ animals }) {
   const [animalss, setAnimalss] = useState([]); // Stores the response data
+  const [time, setTime] = useState(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [form, setForm] = useState({
     agepref: "",
@@ -60,7 +61,21 @@ export default function Home({ animals }) {
         console.log("Error:", error);
       });
   };
-
+  const sendGetTime = (e) => {
+    e.preventDefault(); // Prevent form submission default behavior
+    console.log("Submitting form data:", form);
+    axios
+      .post("/api/getTimeByAnimal", form)
+      .then((response) => {
+        let time = response.data.time
+        setTime(new Date(time))
+        console.log(new Date(time))
+        console.log("Response:", response);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".dropdown-container")) {
@@ -140,32 +155,6 @@ export default function Home({ animals }) {
             value={form.time}
           />
 
-          <fieldset>
-            <legend>Would you like food included?</legend>
-            <div>
-              <input
-                type="radio"
-                id="food-yes"
-                name="food"
-                value="yes"
-                onChange={changeForm}
-                checked={form.food === "yes"}
-              />
-              <label htmlFor="food-yes">Yes</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="food-no"
-                name="food"
-                value="no"
-                onChange={changeForm}
-                checked={form.food === "no"}
-              />
-              <label htmlFor="food-no">No</label>
-            </div>
-          </fieldset>
-
           <button id="agepref-submit" type="submit">
             Submit
           </button>
@@ -184,7 +173,35 @@ export default function Home({ animals }) {
           </div>
         </div>
       )}
+      <h1 className="text-center text-3xl py-5 font-semibold">Best time</h1>
 
+      <div className="trip-planning-div pb-5">
+        <form className="trip-planning-form" onSubmit={sendGetTime}>
+          <label htmlFor="animal">Favorite animal</label>
+          <select
+            onChange={changeForm}
+            name="animal"
+            id="animal"
+            value={form.animal}
+          >
+            <option value="">Select an animal</option>
+            <option value="lion">Lions</option>
+            <option value="tiger">Tigers</option>
+            <option value="elephant">Elephants</option>
+            <option value="hippo">Hippos</option>
+          </select>
+          <button id="agepref-submit" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>  
+      {time && (
+        <div className="trip-planning-div py-2" id="result">
+          <div className="trip-planning-form">
+            <h1><span className="font-semibold">Best time:</span> {time.getHours().toString().padStart(2, "0") + ":" + time.getMinutes().toString().padStart(2, "0")}</h1>
+          </div>
+        </div>
+      )}
       <Footer />
     </>
   );

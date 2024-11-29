@@ -16,12 +16,14 @@ export default async function handler(req, res) {
     })
     let animalsInValue = 100000;
     let id = 0;
+    let time;
     for(let dat of data) {
         if(dat.animalsIn < animalsInValue) {
             animalsInValue = dat.animalsIn
             id = dat.id
+            time = dat.updateAt
         }
     }
-    return res.status(200).json({ message: animalsInValue, id: id })
+    return res.status(200).json({ expected: animalsInValue, time: time })
 }
   
