@@ -149,7 +149,7 @@ export default function Home({ animals }) {
           </select>
 
           <label htmlFor="time">What time will you visit (in hours)?</label>
-          <input
+          <input className="time_input"
             onChange={changeForm}
             type="number"
             id="time"
