@@ -18,7 +18,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ animals }) {
-  const [animalss, setAnimalss] = useState([]); // Stores the response data
+  const [animalss, setAnimalss] = useState([]);
   const [time, setTime] = useState(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [form, setForm] = useState({
@@ -51,20 +51,31 @@ export default function Home({ animals }) {
   };
 
   const send = (e) => {
-    e.preventDefault(); // Prevent form submission default behavior
+    e.preventDefault();
     console.log("Submitting form data:", form);
     axios
       .post("/api/getAnimalsPref", form)
       .then((response) => {
-        setAnimalss(response.data.animals); // Update the state with the response
+        setAnimalss(response.data.animals);
         console.log("Response:", response);
       })
       .catch((error) => {
         console.log("Error:", error);
       });
   };
+  const handleHour = (e) => {
+    const value = parseInt(e.target.value);
+    if (value < 0) return;
+    if(value > 23) return;
+    setForm({
+        ...form,
+        time: value 
+    });
+
+    form.time = value;
+  }
   const sendGetTime = (e) => {
-    e.preventDefault(); // Prevent form submission default behavior
+    e.preventDefault();
     console.log("Submitting form data:", form);
     axios
       .post("/api/getTimeByAnimal", form)
@@ -150,7 +161,7 @@ export default function Home({ animals }) {
 
           <label htmlFor="time">What time will you visit (in hours)?</label>
           <input className="time_input"
-            onChange={changeForm}
+            onChange={handleHour}
             type="number"
             id="time"
             name="time"
@@ -169,7 +180,7 @@ export default function Home({ animals }) {
           <div className="trip-planning-form">
             {animalss.map((animal, index) => (
               <div key={index} className="div-content">
-                {animal.type} | Around this time outside: {animal.average}
+                {animal.type} | Around this time outside: {animal.average} {animal.type}s
               </div>
             ))}
           </div>

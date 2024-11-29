@@ -116,7 +116,7 @@ export default function Animal({ animal }) {
             x: {
                 title: {
                     display: true,
-                    text: "Hour of the Day",
+                    text: "Time of the Day",
                 },
             },
             y: {
