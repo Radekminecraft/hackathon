@@ -8,7 +8,7 @@ export default function Login() {
         e.preventDefault()
         var user = document.getElementById("username");
         var pass = document.getElementById("password");
-        const url = "localhost:8000/logcheck";
+        const url = "localhost:3000/logcheck";
         fetch(url, {
             
             method: 'POST',

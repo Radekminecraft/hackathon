@@ -138,7 +138,7 @@ export default function Lions() {
 
             <div className={styles.animal_div}>
                 <h2 className={styles.animal_h2}>Shaan</h2>
-                <img id={styles.lion_img} src="/tiger2.jpg" alt="Shaan the Tiger"></img>
+                <img id={styles.lion_img} src="/tiger2.jpeg" alt="Shaan the Tiger"></img>
                 <p><strong>Age:</strong> 6 years</p>
                 <p><strong>Arrived at the Zoo:</strong> 4 years ago</p>
                 <p>Shaan arrived at the zoo after being rescued from a wildlife sanctuary where he had spent most of his life in captivity. Initially shy and wary of his new environment, he slowly adjusted to his new life at the zoo. Shaan is known for his quiet strength and intelligent nature, and though he may seem reserved, he is a fierce protector of his territory. His playful interactions with Rajah and the other tigers have made him a respected figure among the zoo's tiger residents. He has found his place and now enjoys exploring his spacious habitat, often basking in the sun during the afternoon.</p>
@@ -146,7 +146,7 @@ export default function Lions() {
 
             <div className={styles.animal_div}>
                 <h2 className={styles.animal_h2}>Tara</h2>
-                <img id={styles.img3} src="/tiger3.jpg" alt="Tara the Tiger"></img>
+                <img id={styles.img3} src="/tiger3.jpeg" alt="Tara the Tiger"></img>
                 <p><strong>Age:</strong> 7 years</p>
                 <p><strong>Arrived at the Zoo:</strong> 5 years ago</p>
                 <p>Tara, a fierce and elegant tigress, has been a part of the zoo's tiger family since she was just a cub. She is known for her independent and adventurous spirit. Tara’s sharp instincts and agility make her an expert climber, often seen perched on the highest branches of the trees in her enclosure. While she enjoys her solitude, Tara is also a natural leader and takes charge when it comes to the younger tigers. Her ability to balance strength with compassion has made her an important role model in the zoo's tiger community, and she continues to thrive in her habitat.</p>

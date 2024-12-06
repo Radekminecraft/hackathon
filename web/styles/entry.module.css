@@ -26,6 +26,9 @@
 .header_item:hover {
   transform: rotate(10deg);
 }
+.header_item:active {
+  color: red;
+}
 .footer {
   background-color: #0f4c5c;
   width: 100%;

@@ -15,7 +15,7 @@ function Header(){
                 <a className={styles.header_item} href="/about">About Zoo</a>
                 <a className={styles.header_item} href="/solutions">Pricelist</a>
                 <a className={styles.header_item} href="..">Exhibitions</a>
-                <a className={styles.header_item} href="galery">Gallery</a>
+                <a className={styles.header_item} href="gallery">Gallery</a>
             </div>
         </header>
     );
