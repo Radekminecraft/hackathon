@@ -15,6 +15,7 @@ import {
 } from 'chart.js';
 import { useRouter } from 'next/router';
 import prisma from "@/utils/prisma.client";
+import Footer from "@/components/footer";
 
 // Registering the components needed for Chart.js
 ChartJS.register(
@@ -156,6 +157,7 @@ export default function Animal({ animal }) {
         <div className={styles.graph}>
             <Line data={chartData} options={options} />
         </div>
+        <Footer/>
         </>
     )
 }

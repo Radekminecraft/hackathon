@@ -47,7 +47,7 @@ export default function Subscriptions() {
             <ul className="space-y-2 text-gray-600 mb-6">
               <li>✔️ Support all modern cameras</li>
             </ul>
-            <button className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
+            <button className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 active:bg-blue-700">
               Subscribe Now
             </button>
           </div>

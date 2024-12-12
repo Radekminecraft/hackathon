@@ -27,7 +27,7 @@
   transform: rotate(10deg);
 }
 .header_item:active {
-  color: red;
+  color: rgb(241, 241, 158)
 }
 .footer {
   background-color: #0f4c5c;

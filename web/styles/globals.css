@@ -129,7 +129,13 @@ p {
     width: 100px;
     height: 20px;
 }
-
+.test {
+    background-color: red;
+    height: 300px;
+    width: 200px;
+    border-width: 3rem;
+    
+}
 
 .building {
     background-color: #fb8b24;

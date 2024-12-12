@@ -12,9 +12,8 @@ export default function About() {
         <p> </p>
         <p className="text">2.Dynamic Pathfinding: Our technology guides you to the most exciting exhibits based on real-time updates, tailoring your route for a seamless and personalized journey.</p>
         <p className="text">3. Interactive Planning: Start your adventure with our app or on-site kiosks. Choose your favorite animals, and let our system design a custom tour highlighting must-see moments.</p>
-        <p id="text">We’re not just a zoo—we’re a destination for tech-savvy exploration and nature enthusiasts alike. By merging the latest advancements with a love for wildlife, we’ve created an experience that’s not only fun but educational and inspiring.
-
-Come explore the future of zoos with us! 🌍✨</p>
+        <p id="text">We’re not just a zoo—we’re a destination for tech-savvy exploration and nature enthusiasts alike. By merging the latest advancements with a love for wildlife, we’ve created an experience that’s not only fun but educational and inspiring. Come explore the future of zoos with us! 🌍✨</p>
+        <p>Our system is very expirienced in various ways from modern UI to Fully functional sytem and AI flexibility</p>
         <Footer></Footer>
         </>
     );

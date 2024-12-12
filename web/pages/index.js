@@ -16,11 +16,11 @@ export async function getServerSideProps() {
     },
   };
 }
-
 export default function Home({ animals }) {
   const [animalss, setAnimalss] = useState([]);
   const [time, setTime] = useState(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPopoutOut, setIsPopOutOpen] = useState(false);
   const [form, setForm] = useState({
     agepref: "",
     animal: "",
@@ -28,6 +28,18 @@ export default function Home({ animals }) {
     food: "",
     isKid: "0",
   });
+  const togglePopout = () => {
+    if (isPopoutOut) {
+      let goober = document.getElementById("arrow");
+      if(goober == null) return;
+      goober.id = "arrow1";
+    } else {
+      let goober = document.getElementById("arrow1");
+      if(goober == null) return;
+      goober.id = "arrow";
+    }
+    setIsPopOutOpen(!isPopoutOut);
+  };
 
   const toggleDropdown = () => {
     if (isDropdownOpen) {
@@ -99,6 +111,16 @@ export default function Home({ animals }) {
     window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".dropdown-container")) {
+        setIsPopOutOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -110,10 +132,10 @@ export default function Home({ animals }) {
           src="/arrow.png"
           id="arrow1"
           className="dropbtn"
-          onClick={toggleDropdown}
+          onClick={togglePopout}
           alt="Toggle Dropdown"
         />
-        {isDropdownOpen && (
+        {isPopoutOut && (
           <div className="dropdown-content">
             {Object.entries(animals).map(([key, animal]) => (
               <a
